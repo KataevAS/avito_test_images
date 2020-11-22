@@ -1,23 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { getBigImg, getImages } from './api';
+import ImageBlock from './components/ImageBlock/ImageBlock';
+import Modal from './components/Modal/Modal';
+import astyle from './utils/styles/astyle.module.css';
+import style from './App.module.css';
+
+
+
 
 function App() {
+  const [img, setImages] = useState(null);
+  const [currentImg, setCurrentImg] = useState(null);
+  const [bigImg, setBigImg] = useState(null)
+
+  const fetchImages = async () => {
+    const data = await getImages();
+    setImages([...data]);
+  };
+
+  const fetchBigImg = async () => {
+    const data = await getBigImg(currentImg);
+    setBigImg({ ...data });
+  };
+
+
+  const openModal = (id) => {
+    setCurrentImg(id);
+  };
+
+  const closeModal = () => {
+    setCurrentImg(null);
+    setBigImg(null);
+  };
+
+
+  useEffect(() => {
+    if (currentImg) {
+      fetchBigImg();
+    }
+  }, [currentImg]);
+
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={astyle.container}>
+      <h1 className={style.title}>TEST APP</h1>
+      <div className={style.imgBox}>
+        {img && img.map(image =>
+          <ImageBlock
+            {...image}
+            key={image.id}
+            openModal={openModal}
+          />
+        )}
+      </div>
+      {currentImg && <Modal {...bigImg} closeModal={closeModal} />}
     </div>
   );
 }

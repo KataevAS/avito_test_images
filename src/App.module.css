@@ -1,0 +1,9 @@
+.title {
+    text-align: center;
+}
+
+.imgBox {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
