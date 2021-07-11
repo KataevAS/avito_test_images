@@ -1,3 +1,16 @@
+.container {
+    max-width: 1200px;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 15px;
+}
+
+.header {
+    margin-bottom:30px;
+}
+
 .title {
     text-align: center;
 }
@@ -12,4 +25,120 @@
     max-width: 30%;
     width: 100%;
     margin: 0 0 20px 0;
+}
+
+.bigImg {
+    max-width: 45vw;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    
+
+    background-color: rgba(0, 0, 0, 0.363);
+}
+
+.modal {
+    padding: 30px;
+
+    display: flex;
+
+    position: relative;
+    width: 70vw;
+
+    background-color: #fff;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
+
+.bigImgBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.closeBtn {
+    position: absolute;
+
+    font-size: 20px;
+
+    top: 21px;
+    right: 21px;
+
+    border: none; 
+    outline: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.comments {
+    width: 15vw;
+    margin-left: 15px;
+}
+
+.commentBox {
+    margin-bottom: 20px;
+}
+
+.commentText {
+    word-wrap: break-word;
+}
+
+.date {
+    color: rgb(156, 156, 156);
+    margin-bottom: 5px;
+}
+
+.form {
+    margin-top: 29px;
+}
+
+.inputBox {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.labelInput {
+    position: absolute;
+    left: 5px;
+
+    color: #CCCCCC;
+}
+
+.input {
+    width: 100%;
+    height: 30px;
+
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+}
+
+.btnSubmit {
+    composes: input;
+
+    background-color: #4997D0;
+    color: #fff;
+}
+
+.footer {    
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: 56px;
+    padding-top: 12px;
+    color: #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    text-align: center;
 }
