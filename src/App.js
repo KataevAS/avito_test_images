@@ -52,11 +52,7 @@ function App() {
       <h1 className={style.title}>TEST APP</h1>
       <div className={style.imgBox}>
         {img && img.map(image =>
-          <ImageBlock
-            {...image}
-            key={image.id}
-            openModal={openModal}
-          />
+          <img className={style.img} src={image.url} alt={image.alt} onClick={() => openModal(image.id)} key={image.id} />
         )}
       </div>
       {currentImg && <Modal {...bigImg} closeModal={closeModal} />}
